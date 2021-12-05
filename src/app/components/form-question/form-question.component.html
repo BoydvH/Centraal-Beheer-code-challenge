@@ -1,0 +1,31 @@
+<div [formGroup]="form">
+  <label [attr.for]="question.key" class="block mt-4">
+  <span class="text-gray-700">{{question.label}}</span>
+    <div [ngSwitch]="question.controlType">
+
+      <input *ngSwitchCase="'textbox'"
+             [formControlName]="question.key"
+             [id]="question.key"
+             [type]="question.type"
+             class="mt-1 block w-full rounded-md bg-yellow-400 border-red-400 focus:border-gray-500 focus:bg-yellow-300 focus:ring-0"
+              [attr.placeholder]="question.placeholder"
+      >
+
+      <select *ngSwitchCase="'dropdown'"
+              [formControlName]="question.key"
+              [id]="question.key"
+              class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+              >
+        <option *ngFor="let option of question.options" [value]="option.key">{{option.value}}</option>
+      </select>
+    </div>
+
+    <div *ngIf="!isValid"
+         class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2"
+         role="alert"
+    >
+      <div class="font-bold">{{question.errorHeader}}</div>
+      <div class="block sm:inline">{{question.errorMessage}}</div>
+    </div>
+  </label>
+</div>

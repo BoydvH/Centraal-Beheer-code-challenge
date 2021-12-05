@@ -1,0 +1,15 @@
+<div>
+  <form class="p-8" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <h2 class="text-xl font-bold text-blue-500">{{formHeader}}</h2>
+
+
+    <div *ngFor="let question of questions" class="form-row">
+      <app-form-question [question]="question" [form]="form"></app-form-question>
+    </div>
+
+    <div class="mt-4">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" [disabled]="!form.valid">{{formSubmit}}</button>
+    </div>
+  </form>
+
+</div>
