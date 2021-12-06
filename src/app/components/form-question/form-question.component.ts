@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {Question} from '../../models/question';
+import {KentekenCheck} from 'rdw-kenteken-check'
 
 @Component({
   selector: 'app-form-question',
@@ -14,7 +15,10 @@ export class FormQuestionComponent implements OnInit {
   @Input() vehicle!: string;
   @Output() incrementStepEvent = new EventEmitter<number>();
   @Output() vehicleEvent = new EventEmitter<string>();
-  constructor() {}
+  valid: boolean
+  constructor() {
+    this.valid = true
+  }
 
   ngOnInit(): void {
 
@@ -50,8 +54,14 @@ export class FormQuestionComponent implements OnInit {
       });
   }
 
+  // validate license plate number for rdw approved format
+  validateLicensePlate(event: Event) {
+    const licensePlateNumber = (event.target as HTMLInputElement).value
+    const licensePlate = new KentekenCheck(licensePlateNumber)
+    this.valid = licensePlate.formatLicense() !== "XX-XX-XX";
+  }
+
   get isValid() {
-    //todo implement validation based on question input
-    return true;
+    return this.valid
   }
 }
