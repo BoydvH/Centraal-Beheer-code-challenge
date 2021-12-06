@@ -42,6 +42,8 @@ export class DynamicFormComponent implements OnInit {
         break;
       case "scooter":
         this.imagePath = "../assets/scooter.jpg"
+        // also set the current step to 3, as scooters don't have subtypes
+        this.currentStep = 3
         break;
     }
     this.imagePathEvent.emit(this.imagePath);
