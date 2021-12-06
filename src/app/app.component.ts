@@ -10,7 +10,12 @@ import { Question } from './models/question';
 })
 export class AppComponent {
   questions: Question<string>[];
+  imagePath: string | null = "";
   constructor(service: QuestionServiceService) {
     this.questions = service.getQuestions();
+  }
+
+  setImagePath(path: string) {
+    this.imagePath = path
   }
 }

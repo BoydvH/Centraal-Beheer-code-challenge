@@ -1,6 +1,7 @@
 <div class="grid md:grid-cols-2">
 
   <app-dynamic-form
+    (imagePathEvent)="setImagePath($event)"
     [formHeader]="'Voertuiginformatie opzoeken'"
     [formSubmit]="'Verzenden'"
     [questions]="questions"
@@ -8,6 +9,6 @@
   </app-dynamic-form>
 
   <picture>
-    <img src="../assets/auto.jpg" alt="auto" class="object-cover h-full w-full">
+    <img [src]="imagePath" alt="auto" class="object-cover h-full w-full">
   </picture>
 </div>
