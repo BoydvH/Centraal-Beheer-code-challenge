@@ -46,7 +46,7 @@ export class FormQuestionComponent implements OnInit {
       // separate groups of four letters
       .replace(/[a-z]{4}/gi, function (x)
       {
-        return `${x.substring(0,2)}-${x.substring(0,2)}`;
+        return `${x.substring(0,2)}-${x.substring(2,4)}`;
       });
   }
 
