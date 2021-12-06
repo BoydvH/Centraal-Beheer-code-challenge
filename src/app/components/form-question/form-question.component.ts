@@ -1,6 +1,6 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Question } from '../../models/question';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {Question} from '../../models/question';
 
 @Component({
   selector: 'app-form-question',
@@ -31,7 +31,24 @@ export class FormQuestionComponent implements OnInit {
     }
   }
 
+  onInputChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    target.value = this.licensePlateFormatter(target.value)
+  }
 
+  // separate numbers and letters
+  licensePlateFormatter(licencePlate: string): string {
+    return licencePlate
+      // separate numbers and letters
+      .match(/[a-z]+|[0-9]+/gi)!
+      .join("-")
+      .toUpperCase()
+      // separate groups of four letters
+      .replace(/[a-z]{4}/gi, function (x)
+      {
+        return `${x.substring(0,2)}-${x.substring(0,2)}`;
+      });
+  }
 
   get isValid() {
     //todo implement validation based on question input
