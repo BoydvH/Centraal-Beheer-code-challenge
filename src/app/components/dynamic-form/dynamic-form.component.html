@@ -4,7 +4,14 @@
 
 
     <div *ngFor="let question of questions" class="form-row">
-      <app-form-question [question]="question" [form]="form"></app-form-question>
+      <app-form-question
+        (incrementStepEvent)="modifyStep($event)"
+        (vehicleEvent)="setVehicle($event)"
+        [currentStep]="currentStep"
+        [question]="question"
+        [form]="form"
+        [vehicle]="vehicle"
+      ></app-form-question>
     </div>
 
     <div class="mt-4">

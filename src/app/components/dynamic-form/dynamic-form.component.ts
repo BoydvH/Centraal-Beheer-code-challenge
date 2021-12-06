@@ -14,7 +14,19 @@ export class DynamicFormComponent implements OnInit {
   @Input() formSubmit: string | null = '';
   @Input() questions: Question<string>[] | null = [];
   form!: FormGroup;
-  constructor(private formGroupService: FormGroupServiceService) {}
+  currentStep: number;
+  vehicle!: string;
+  constructor(private formGroupService: FormGroupServiceService) {
+    this.currentStep = 1;
+  }
+
+  setVehicle(newVehicle: string) {
+    this.vehicle = newVehicle
+  }
+
+  modifyStep(modifier: number) {
+    this.currentStep += modifier
+  }
 
   ngOnInit(): void {
     this.form = this.formGroupService.toFormGroup(

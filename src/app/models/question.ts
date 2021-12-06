@@ -5,6 +5,7 @@ export class Question<T> {
   required: boolean;
   controlType: string;
   step: number;
+  vehicle: string;
   type: string;
   options: { key: string; value: string }[];
   placeholder: string;
@@ -19,6 +20,7 @@ export class Question<T> {
       required?: boolean;
       controlType?: string;
       step?: number;
+      vehicle?: string;
       type?: string;
       options?: { key: string; value: string }[];
       placeholder?: string;
@@ -32,6 +34,7 @@ export class Question<T> {
     this.required = !!options.required;
     this.controlType = options.controlType || '';
     this.step = options.step || 0;
+    this.vehicle = options.vehicle || "";
     this.type = options.type || '';
     this.options = options.options || [];
     this.placeholder = options.placeholder || '';

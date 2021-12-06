@@ -21,6 +21,7 @@ export class QuestionServiceService {
         ],
         step: 1,
         required: true,
+        vehicle: ""
       }),
       // car type selector
       new DropdownQuestion({
@@ -37,6 +38,7 @@ export class QuestionServiceService {
         ],
         step: 2,
         required: true,
+        vehicle: "car"
       }),
       // motorcycle type selector
       new DropdownQuestion({
@@ -53,6 +55,7 @@ export class QuestionServiceService {
         ],
         step: 2,
         required: true,
+        vehicle: "motorcycle"
       }),
 
       new TextboxQuestion({
@@ -62,6 +65,7 @@ export class QuestionServiceService {
         errorHeader: 'Oeps, het ingevoerde kenteken is niet geldig.',
         errorMessage: 'Gebruik het volgende formaat AA-12-BB.',
         required: true,
+        step: 3
       }),
     ];
   };
